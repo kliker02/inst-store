@@ -1,0 +1,46 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <div class="card" style="position: relative">
+        <div class="card-body">
+            <!-- Credit Card -->
+            <div id="pay-invoice">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-center">Пользователь - {{ row.email }}[{{ row.id }}]</h3>
+                    </div>
+                    <hr>
+                    <form action="{{ path('app_admin_user_edit', {id: row.id}) }}" method="post">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-3"><label for="Email" class="control-label mb-1">Email:*</label></div>
+                                <div class="col-sm-8 col-md-9"><input id="Email" name="Email" type="email" class="form-control" value="{{ row.email }}" autocomplete="off" required></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-3"><label class="control-label mb-1">Персональная скидка, %:</label></div>
+                                <div class="col-sm-8 col-md-9"><input id="Discount" name="Discount" type="text" class="form-control" value="{{ row.discount }}" max="99" required></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-3"><label for="isAdmin" class="control-label mb-1">Назначить администратором:*</label></div>
+                                <div class="col-sm-8 col-md-9"><input id="isAdmin" name="isAdmin" type="checkbox" class="form-control" value="1" {{ constant('ROLE_ADMIN', row) in row.roles ? 'checked' : '' }} style="width: 27px;"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-3"><label class="control-label mb-1">Баланс RUB:</label></div>
+                                <div class="col-sm-8 col-md-9">{{ row.balanceRUB }} руб</div>
+                            </div>
+                        </div>
+                        <div>
+                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">Сохранить</button>
+                            <a href="{{ path('app_admin_user_get', {id: row.ID}) }}" class="btn btn-warning" style="position: fixed; bottom: 65px;">Назад</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

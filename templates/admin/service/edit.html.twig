@@ -1,0 +1,108 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <div class="card" style="position: relative">
+        <div class="card-body">
+            <!-- Credit Card -->
+            <div id="pay-invoice">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-center">Редактирование услуги</h3>
+                    </div>
+                    <hr>
+                    <form action="{{ path('app_admin_service_edit', {id: row.ID}) }}" method="post">
+                        <div class="form-group">
+                            <label for="Name" class="control-label mb-1">Название:*</label>
+                            <input id="Name" name="Name" type="text" class="form-control" value="{{ row.readName }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CategoryID" class="control-label mb-1">Категория:*</label>
+                            <select name="CategoryID" class="form-control identified">
+                                <option value="">- выбрать -</option>
+                                {% for Category in Categories %}
+                                    <option value="{{ Category.ID }}" {{ row.Category.ID == Category.ID ? 'selected' : '' }}>{{ Category.Name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="API" class="control-label mb-1">АПИ 3апроса:*</label>
+                            <input id="API" name="API" type="text" class="form-control" value="{{ row.API }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CheckOrderStatus" class="control-label mb-1">Проверка статуса, АПИ:*</label>
+                            <input id="CheckOrderStatus" name="CheckOrderStatus" value="{{ row.OrderAPI }}" type="text" class="form-control"
+                                   required>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="MinQuantity" class="control-label mb-1">Минимум:*</label>
+                                    <input id="MinQuantity" name="MinQuantity" value="{{ row.MinQuantity }}" type="text" class="form-control"
+                                           placeholder="10"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="MaxQuantity" class="control-label mb-1">Максимум:*</label>
+                                    <input id="MaxQuantity" name="MaxQuantity" value="{{ row.MaxQuantity }}" type="text" class="form-control"
+                                           placeholder="5000"
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="Type" class="control-label mb-1">Тип:*</label>
+                                    <select name="Type" class="form-control identified">
+                                        <option value="Default">Default</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="Price" class="control-label mb-1">Цена:*</label>
+                                    <input id="Price" name="Price" value="{{ row.Price }}" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="ResellerPrice" class="control-label mb-1">Цена реселлеру:</label>
+                                    <input id="ResellerPrice" name="ResellerPrice" value="{{ row.ResellerPrice }}" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="Status" class="control-label mb-1">Статус:*</label>
+                                    <select name="Status" class="form-control">
+                                        {% for status, text in Statuses %}
+                                            <option value="{{ status }}" {{ row.Status == status ? 'selected' : '' }}>{{ text }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-success">
+                            <label for="Description" class="control-label mb-1">Описание:*</label>
+                            <textarea cols="30" rows="10" id="Description" name="Description" type="text"
+                                      class="form-control">
+                                {{ row.readDescription }}
+                            </textarea>
+                        </div>
+                        <div>
+                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">Сохранить</button>
+                            <a href="{{ path('app_admin_service_get', {id: row.ID}) }}" class="btn btn-warning" style="position: fixed; bottom: 65px;">Назад</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('admin/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('Description');
+    </script>
+{% endblock %}

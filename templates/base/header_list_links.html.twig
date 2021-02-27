@@ -1,0 +1,40 @@
+<ul class="menu">
+    <li>
+        <a href="{{ path('app_index_index') }}">Главная</a>
+    </li>
+    <li>
+        <a href="{{ path('app_index_services') }}">Услуги</a>
+    </li>
+    <li>
+        <a href="{{ path('app_index_contact') }}">Контакты</a>
+    </li>
+    <li>
+        <a href="{{ path('app_index_faq') }}">F.A.Q</a>
+    </li>
+    {% if (is_granted('ROLE_USER')) %}
+        <li>
+            <a href="{{ path('app_client_order_getlist') }}">Мои заказы</a>
+        </li>
+        <li>
+            <a href="{{ path('app_client_order_new') }}">Заказать</a>
+        </li>
+        <li>
+            <a href="{{ path('app_client_payment_balance') }}">Баланс({{ app.user.BalanceRUB }}руб.)</a>
+        </li>
+    {% endif %}
+    {% if (is_granted('ROLE_ADMIN')) %}
+    <li>
+        <a href="{{ path('app_admin') }}">Админ панель</a>
+    </li>
+    {% endif %}
+    {% if (app.user == null)  %}
+    <li>
+        <a href="{{ path('app_login') }}" class="m-0 header-button">Авторизация</a>
+    </li>
+    {% endif %}
+    {% if (app.user != null)  %}
+        <li>
+            <a href="{{ path('app_logout') }}" class="m-0 header-button">Выход</a>
+        </li>
+    {% endif %}
+</ul>

@@ -1,0 +1,283 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Главная - Inst-Store накрутка подписчиков, лайков, комментариев{% endblock %}
+
+{% block body %}
+    <!--============= ScrollToTop Section Starts Here =============-->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+    <div class="overlay"></div>
+    <!--============= ScrollToTop Section Ends Here =============-->
+
+    <!--============= Banner Section Starts Here =============-->
+    <section class="banner-7 bg_img oh bottom_right" data-background="{{ asset('/assets/images/banner/banner-bg-7.jpg') }}">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="banner-content-7">
+                        <h1 class="title">Накручивай что угодно вместе с нами!</h1>
+                        <p>
+                            Inst-Store - простой способ продвижения в Инстаграм
+                        </p>
+                        <div class="banner-button-group">
+                            {% if (app.user == null)  %}
+                                <a href="{{ path('app_register') }}" class="button-4">Регистрация</a>
+                            {% endif %}
+                            <a href="{{ path('app_index_services') }}" class="button-4 active">Услуги</a>
+                            <a href="{{ path('app_index_faq') }}" class="button-4">Часто задаваемые вопросы</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-lg-block d-none">
+                    <img src="{{ asset('/assets/images/banner/banner-7.png') }}" alt="banner">
+                </div>
+                <div class="col-12" style="display: none!important;">
+                    <div class="counter-wrapper-3">
+                        <div class="counter-item">
+                            <div class="counter-thumb">
+                                <img src="{{ asset('/assets/images/icon/counter1.png') }}" alt="Пользователей">
+                            </div>
+                            <div class="counter-content">
+                                <h2 class="title"><span class="counter">1689</span></h2>
+                                <span class="name">Пользователей</span>
+                            </div>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-thumb">
+                                <img src="{{ asset('/assets/images/icon/counter2.png') }}" alt="Ежедневных посещений">
+                            </div>
+                            <div class="counter-content">
+                                <h2 class="title"><span class="counter">571</span></h2>
+                                <span class="name">Ежедневных посещений</span>
+                            </div>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-thumb">
+                                <img src="{{ asset('/assets/images/icon/counter5.png') }}" alt="Заказов выполнено">
+                            </div>
+                            <div class="counter-content">
+                                <h2 class="title"><span class="counter">5638</span></h2>
+                                <span class="name">Заказов выполнено</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Banner Section Ends Here =============-->
+
+
+    <!--============= To Access Section Starts Here =============-->
+    <section class="to-access-section padding-top padding-bottom bg_img mb-lg-5" data-background="{{ asset('/assets/images/feature/to-access-bg.png') }}" id="feature">
+        <div class="container">
+            <div class="section-header">
+                <h5 class="cate">Удивительные возможности</h5>
+                <h2 class="title">Виды накрутки в Instagram</h2>
+                <p>У нас очень много услуг для продвижения в Инстаграм. Некоторые из них:</p>
+            </div>
+            <div class="row mb-30 justify-content-center">
+                <div class="col-lg-4 col-sm-12">
+                    <div class="to-access-item">
+                        <div class="to-access-thumb">
+                            <span class="anime"></span>
+                            <div class="thumb d-flex justify-content-center align-items-center">
+                                <img src="{{ asset('/assets/images/icon/counter1.png') }}" alt="Подписчики">
+                            </div>
+                        </div>
+                        <h5 class="title">Подписчики</h5>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="to-access-item active">
+                        <div class="to-access-thumb">
+                            <span class="anime"></span>
+                            <div class="thumb d-flex justify-content-center align-items-center">
+                                <i class="fas fa-heart" style="font-size: 2rem; color: rgb(237, 73, 86);"></i>
+                            </div>
+                        </div>
+                        <h5 class="title">Лайки</h5>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="to-access-item">
+                        <div class="to-access-thumb">
+                            <span class="anime"></span>
+                            <div class="thumb d-flex justify-content-center align-items-center">
+                                <img src="{{ asset('/assets/images/icon/counter2.png') }}" alt="Просмотры">
+                            </div>
+                        </div>
+                        <h5 class="title">Просмотры</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="{{ path('app_index_services') }}" class="get-button">Все услуги</a>
+            </div>
+        </div>
+    </section>
+    <!--============= To Access Section Ends Here =============-->
+
+
+    <!--============= How It Works Section Starts Here =============-->
+    <section class="work-section padding-bottom bg_img mb-md-95 pb-md-0" data-background="{{ asset('/assets/images/work/work-bg.jpg') }}" id="how">
+        <div class="oh padding-top pos-rel">
+            <div class="top-shape d-none d-lg-block">
+                <img src="{{ asset('/assets/css/img/work-shape.png') }}" alt="css">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-xl-7">
+                        <div class="section-header left-style cl-white">
+                            <h5 class="cate">Inst Store накрутка и продвижение </h5>
+                            <h2 class="title">Как это работает?</h2>
+                            <p>Это проще, чем кажется. Выполняй всё по пунктам!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-slider owl-carousel owl-theme" data-slider-id="2">
+                    <div class="work-item">
+                        <div class="work-thumb">
+                            <img src="{{ asset('/assets/images/work/work1.png') }}" alt="work">
+                        </div>
+                        <div class="work-content cl-white">
+                            <h3 class="title">Регистрация</h3>
+                            <p>Во-первых, вам необходимо зарегистрировать учетную запись пользователя
+                                на нашем веб-сайте - Inst Store</p>
+                            {% if (app.user == null)  %}
+                                <a href="{{ path('app_register') }}" class="get-button white light">Регистрация <i class="flaticon-right"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-thumb">
+                            <img src="{{ asset('/assets/images/work/work1.png') }}" alt="work">
+                        </div>
+                        <div class="work-content cl-white">
+                            <h3 class="title">Оплата</h3>
+                            <p>До заказа остался 1 шаг. А сейчас пополни баланс!</p>
+{#                            <a href="#0" class="get-button white light">Get Started <i class="flaticon-right"></i></a>#}
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-thumb">
+                            <img src="{{ asset('/assets/images/work/work1.png') }}" alt="work">
+                        </div>
+                        <div class="work-content cl-white">
+                            <h3 class="title">Заказ</h3>
+                            <p>Ну а теперь можно расслабиться! Выбери услугу и сделай заказ!</p>
+{#                            <a href="#0" class="get-button white light">Get Started <i class="flaticon-right"></i></a>#}
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-thumb">
+                            <img src="{{ asset('/assets/images/work/work1.png') }}" alt="work">
+                        </div>
+                        <div class="work-content cl-white">
+                            <h3 class="title">Готово!</h3>
+                            <p>Все получилось! Теперь осталось наблюдать за результатом!</p>
+{#                            <a href="#0" class="get-button white light">Get Started <i class="flaticon-right"></i></a>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="count-slider owl-thumbs" data-slider-id="2">
+                <div class="count-item">
+                    <span class="serial">01</span>
+                    <h5 class="title">Регистрация</h5>
+                </div>
+                <div class="count-item">
+                    <span class="serial">02</span>
+                    <h5 class="title">Оплата</h5>
+                </div>
+                <div class="count-item">
+                    <span class="serial">03</span>
+                    <h5 class="title">Заказ</h5>
+                </div>
+                <div class="count-item">
+                    <span class="serial">04</span>
+                    <h5 class="title">Готово!</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= How It Works Section Ends Here =============-->
+
+
+    <!--============= Access Section Starts Here =============-->
+    <section class="access-section padding-bottom padding-top oh">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-4 col-xl-3 rtl d-none d-lg-block">
+                    <img src="{{ asset('/assets/images/access/access1.png') }}" alt="access">
+                </div>
+                <div class="col-lg-8">
+                    <div class="access-content">
+                        <div class="section-header left-style mb-olpo">
+                            <h5 class="cate">Всё под рукой</h5>
+                            <h2 class="title">Панель заказов</h2>
+                            <p>Мы ценим своих пользователей, а пользователи любят нас. Поэтому у нас есть всё, чтобы видеть прогресс продвижения</p>
+                        </div>
+{#                        <a href="#0" class="get-button">get free  trial <i class="flaticon-right"></i></a>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Access Section Ends Here =============-->
+
+    <!--============= Advance Feature Section Starts Here =============-->
+    <section class="advance-feature-section padding-top-2 padding-bottom-2 ash-gradient-bg">
+        <div class="container">
+            <div class="advance-feature-item padding-top-2 padding-bottom-2">
+                <div class="advance-feature-thumb d-none d-lg-block">
+                    <img src="{{ asset('/assets/images/feature/advance1.png') }}" alt="feature">
+                </div>
+                <div class="advance-feature-content">
+                    <div class="section-header left-style mb-olpo">
+                        <h5 class="cate">С заботой о вас</h5>
+                        <h2 class="title">Дизайн</h2>
+                        <p>Простой, интуитивно понятный пользовательский интерфейс разработан, чтобы помочь вам увидеть, на чем именно вам нужно сосредоточиться</p>
+                    </div>
+{#                    <a href="#0" class="get-button">get free  trial <i class="flaticon-right"></i></a>#}
+                </div>
+            </div>
+            <div class="advance-feature-item padding-top-2 padding-bottom-2">
+                <div class="advance-feature-thumb d-none d-lg-block">
+                    <img src="{{ asset('/assets/images/feature/advance2.png') }}" alt="feature">
+                </div>
+                <div class="advance-feature-content">
+                    <div class="section-header left-style mb-olpo">
+                        <h5 class="cate">Скидки</h5>
+                        <h2 class="title">Скидки, акции и  события</h2>
+                        <p>Каждую неделю счастливчики получают бонусы!</p>
+                    </div>
+{#                    <a href="#0" class="get-button">Регистрация <i class="flaticon-right"></i></a>#}
+                </div>
+            </div>
+            <div class="advance-feature-item padding-top-2 padding-bottom-2">
+                <div class="advance-fea ture-thumb d-none d-lg-block">
+                    <img src="{{ asset('/assets/images/feature/advance3.png') }}" alt="feature">
+                </div>
+                <div class="advance-feature-content">
+                    <div class="section-header left-style mb-olpo">
+                        <h5 class="cate">Мобильное приложение</h5>
+                        <h2 class="title">Android & IOS</h2>
+                        <p>А ещё у нас есть мобильное приложение, но оно в разработке. Как только оно будет готово, вы обязательно узнаете!</p>
+                    </div>
+{#                    <a href="#0" class="get-button">get free  trial <i class="flaticon-right"></i></a>#}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Advance Feature Section Ends Here =============-->
+{% endblock %}

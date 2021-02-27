@@ -1,0 +1,53 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <div class="users">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="box-title">Список счетов</h4>
+                    </div>
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Пользователь</th>
+                                    <th>Валюта</th>
+                                    <th>Тип</th>
+                                    <th>Статус</th>
+                                    <th>Итого</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in pagination %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ row.UserName }}</td>
+                                        <td>RUB</td>
+                                        <td>{{ row.getTypeText(row.Type) }}</td>
+                                        <td><strong>{{ row.getStatusText(row.Status) }}</strong></td>
+                                        <td>{{ row.Total*row.Factor }} руб.</td>
+                                        <td>[<a href="{{ path('app_admin_payment_get', {id: row.ID}) }}">Детали</a>/<a href="{{ path('app_admin_payment_edit', {id: row.ID}) }}">Изменить</a>]</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div> <!-- /.table-stats -->
+                    </div>
+                </div> <!-- /.card -->
+            </div>
+        </div>
+        <div>
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+    <!-- /.orders -->
+    <div class="clearfix"></div>
+
+    </div>
+    <!-- /#right-panel -->
+
+{% endblock %}

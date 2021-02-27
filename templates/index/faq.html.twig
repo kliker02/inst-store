@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %}
+{% block title %}FAQ - Inst-Store - накрутка подписчиков в инстаграм, лайков, комментариев{% endblock %}
+{% block header %}
+    <style>
+        .get-button {
+            padding: 11px 5px;
+        }
+    </style>
+    <!--============= Header Section Starts Here =============-->
+    <header class="header-section inner-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="{{ path('app_index_index') }}">
+                        <img src="{{ asset('/assets/images/logo/logo2.png') }}" alt="logo">
+                    </a>
+                </div>
+                {{ include('base/header_list_links.html.twig') }}
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--============= Header Section Ends Here =============-->
+
+    <section class="page-header bg_img oh" data-background="{{ asset('/assets/images/page-header.png') }}">
+        <div class="bottom-shape d-none d-md-block">
+            <img src="{{ asset('/assets/css/img/page-header.png') }}" alt="css">
+        </div>
+        <div class="container">
+            <div class="page-header-content cl-white">
+                <h2 class="title">Вопросы и ответы</h2>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ path('app_index_index') }}">Главная</a>
+                    </li>
+                    <li>
+                        FAQs
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--============= Header Section Ends Here =============-->
+{% endblock header %}
+{% block body %}
+    <section class="faq-section padding-top padding-bottom">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-4">
+                    <aside class="sticky-menu">
+                        <div class="faq-menu bg_img mb-30" data-background="./assets/images/faq/faq-menu.png">
+                            <ul id="faq-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#get">Начиная</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#how">Вопросы</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-lg-8 col-xl-7">
+                    <article class="mt-70 mt-lg-0">
+                        <div class="faq--wrapper" id="get">
+                            <h3 class="main-title">Начиная</h3>
+                            <div class="faq--area">
+                                <div class="faq--item">
+                                    <div class="faq-title">
+                                        <h6 class="title">Что может inst-store?</h6>
+                                        <span class="icon"></span>
+                                    </div>
+                                    <div class="faq-content">
+                                        <p>Благодаря удобной платформе inst-store раскрутка или накрутка аккаунтов в различных соц.сетей
+                                             стала более доступной, эффективной и прозрачной для клиентов любой категории от одного креативного человека до крупнейших компаний.
+                                            Для удобства наших клиентов мы разработали единтсвенную на рынке систему по автоматизации и эффективному управлению раскруткой!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="faq--item">
+                                    <div class="faq-title">
+                                        <h6 class="title">Где я могу скачать мобильное приложение?</h6>
+                                        <span class="icon"></span>
+                                    </div>
+                                    <div class="faq-content">
+                                        <p>Мобильное приложение в разработке. Как только оно появится на популярных площадках Google Play или App Store, мы обязательно Вам сообщим.</p>
+                                    </div>
+                                </div>
+                                <div class="faq--item">
+                                    <div class="faq-title">
+                                        <h6 class="title">Как пользоваться системой inst-store?</h6>
+                                        <span class="icon"></span>
+                                    </div>
+                                    <div class="faq-content">
+                                        <p>Начать пользоваться системой inst-store вы можете 2 способами:</p>
+                                        <ul style="margin-left: 30px;">
+                                            <li style="list-style: disc">Зарегистрироваться на сайте <a href="{{ path('app_register') }}">inst-store</a></li>
+                                            <li style="list-style: disc">Связаться с нами через форму обратной связи</li>
+                                        </ul>
+                                        <p>После регистрации в системе, у вас появится Личный Кабинет в котором будет производиться дальнейшая работа с нами. В Личном кабинете будет доступна инструкция Пользователя, в которой детально расписано, как создать Ваш первый заказ.</p>
+                                    </div>
+                                </div>
+                                <div class="faq--item">
+                                    <div class="faq-title">
+                                        <h6 class="title">Как сделать первый заказ?</h6>
+                                        <span class="icon"></span>
+                                    </div>
+                                    <div class="faq-content">
+                                        <p>6 быстрых этапов для старта:</p>
+                                        <ul style="margin-left: 30px;">
+                                            <li style="list-style: disc">3арегистрироваться на inst-store</li>
+                                            <li style="list-style: disc">Авторизоваться</li>
+                                            <li style="list-style: disc">Пополнить баланс</li>
+                                            <li style="list-style: disc">Перейти на страницу "Заказать"</li>
+                                            <li style="list-style: disc">3аполнить детали заказа</li>
+                                            <li style="list-style: disc">Оформить заказ</li>
+                                        </ul>
+                                        <p>После регистрации в системе, у вас появится Личный Кабинет в котором будет производиться дальнейшая работа с нами. В Личном кабинете будет доступна инструкция Пользователя, в которой детально расписано, как создать Ваш первый заказ.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq--wrapper" id="how">
+                            <h3 class="main-title">Вопросы</h3>
+                            <div class="faq--area">
+                                <div class="faq--item">
+                                    <div class="faq-title">
+                                        <h6 class="title">Проблемы с балансом</h6>
+                                        <span class="icon"></span>
+                                    </div>
+                                    <div class="faq-content">
+                                        <p>Оплата зачисляется в течение 5 минут. В большинстве случаев после 5 минут вопросы отпадают. Если вы пополнили баланс, но средства не пришли - пожалуйста, напишите нам в чат, либо воспользуйтесь формой обратной связи.
+                                            Мы обязательно во всё разберёмся в течение нескольких часов.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Faqs Section Ends Here =============-->
+
+
+    <!--============= Comunity Section Starts Here =============-->
+    <section class="comunity-section padding-top padding-bottom oh pos-rel">
+        <div class="comunity-bg bg_img" data-background="./assets/images/client/mosto-client.jpg"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="section-header cl-white">
+                        <h5 class="cate">Все ещё нужна помощь?</h5>
+                        <h2 class="title">Не тратьте время</h2>
+                        <p>Если вы застряли или просто хотите получить совет с чего начать, при возникновении любых проблем обращайтесь к нашим специалистам
+                            в любое время.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comunity-asking">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-6 rtl d-none d-lg-block">
+                        <img src="./assets/images/feature/help.png" alt="feature">
+                    </div>
+                    <div class="col-lg-6 col-xl-5 mb-30-none">
+                        <div class="help-item">
+                            <div class="help-thumb">
+                                <img src="./assets/images/feature/help1.png" alt="help">
+                            </div>
+                            <div class="help-content">
+                                <h5 class="title">Онлайн чат</h5>
+                                <p>Я могу вам чем-нибудь помочь?</p>
+                            </div>
+                        </div>
+                        <div class="help-item">
+                            <div class="help-thumb">
+                                <img src="./assets/images/feature/help2.png" alt="help">
+                            </div>
+                            <div class="help-content">
+                                <h5 class="title">Отправить обращение</h5>
+                                <p>Если мы не доступны в онлайн чате или у нас перерыв. Вы можете отправить обращение через форму обратной связи</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Comunity Section Ends Here =============-->
+{% endblock body %}

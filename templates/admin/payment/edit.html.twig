@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <!-- Credit Card -->
+            <div id="pay-invoice">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-center">{{ row.getTypeText(row.Type) }} #{{ "%06d"|format(row.ID) }}: редактирование</h3>
+                    </div>
+                    <hr>
+                    <form action="{{ path('app_admin_payment_edit', {id: row.ID}) }}" method="post">
+                        <div class="form-group">
+                            <label for="User_ID" class="control-label mb-1">Клиент:*</label>
+                            <select name="User_ID" class="form-control identified">
+                                <option value="">- выбрать -</option>
+                                {% for Client in Clients %}
+                                    <option value="{{ Client.id }}" {{ row.UserID == Client.id ? 'selected' : '' }}>{{ Client.email }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Type" class="control-label mb-1">Тип:*</label>
+                            <select name="Type" class="form-control identified">
+                                <option value="">- выбрать -</option>
+                                {% for Type, Text in Types %}
+                                    <option value="{{ Type }}" {{ row.Type == Type ? 'selected' : '' }}>{{ Text }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Name" class="control-label mb-1">Описание:*</label>
+                            <div class="input-group mb-3">
+                                <input id="Name" name="Name" type="text" class="form-control" value="{{ row.Name }}" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon1"><a href="#" onclick="document.getElementById('Name').value ='Пополнение счёта'">Пополнение</a></span>
+                                    <span class="input-group-text" id="basic-addon1"><a href="#" onclick="document.getElementById('Name').value ='Возврат средств на '+'{{ 'now'|date('d.m.Y H:i:s') }}'">Возврат</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Total" class="control-label mb-1">Итого:*</label>
+                            <input id="Total" name="Total" type="text" class="form-control" value="{{ row.Total }}" required>
+                        </div>
+                        <div>
+                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                Создать
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

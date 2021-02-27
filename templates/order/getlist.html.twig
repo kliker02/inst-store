@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+{% block title %}Заказы - Inst-Store{% endblock %}
+{% block header %}
+    <style>
+        .get-button {
+            padding: 11px 5px;
+        }
+        html {
+            min-width: 1200px;
+        }
+    </style>
+    <!--============= Header Section Starts Here =============-->
+    <header class="header-section inner-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="{{ path('app_index_index') }}">
+                        <img src="{{ asset('/assets/images/logo/logo.png') }}" alt="logo">
+                    </a>
+                </div>
+                {{ include('base/header_list_links.html.twig') }}
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--============= Header Section Ends Here =============-->
+
+    <section class="page-header bg_img oh" data-background="{{ asset('/assets/images/page-header.png') }}">
+        <div class="bottom-shape d-none d-md-block">
+            <img src="{{ asset('/assets/css/img/page-header.png') }}" alt="css">
+        </div>
+        <div class="container">
+            <div class="page-header-content cl-white">
+                <h2 class="title">Список заказов</h2>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ path('app_index_index') }}">Главная</a>
+                    </li>
+                    <li>
+                        Список заказов
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--============= Header Section Ends Here =============-->
+{% endblock %}
+{% block body %}
+<!--============= ScrollToTop Section Starts Here =============-->
+<div class="preloader">
+    <div class="preloader-inner">
+        <div class="preloader-icon">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+<div class="overlay"></div>
+<!--============= ScrollToTop Section Ends Here =============-->
+<!--============= Blog Section Starts Here =============-->
+<section class="blog-section padding-top padding-bottom">
+    <div class="container">
+        <div class="row justify-content-between">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Вид накрутки</th>
+                    <th scope="col">Количество</th>
+                    <th scope="col">Ссылка</th>
+                    <th scope="col">Остаток</th>
+                    <th scope="col">Было</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Дата создания</th>
+                    <th scope="col">Детали</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in pagination.items %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ row.Service.readName }}</td>
+                    <td>{{ row.Quantity }}</td>
+                    <td>{{ row.Link }}</td>
+                    <td>{{ row.QuantityRemains }}</td>
+                    <td>{{ row.StartCount }}</td>
+                    <td>{{ row.Status }}</td>
+                    <td>{{ row.CreatedDate.format('d.m.Y H:i:s') }}</td>
+                    <td><a href="{{ path('app_client_order_get', {id: row.id}) }}">Детали</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</section>
+<!--============= Blog Section Ends Here =============-->
+{% endblock %}

@@ -1,0 +1,26 @@
+<div class="form-group row">
+    <div class="col-4 col-md-6 text-right">Название:</div>
+    <div class="col-8 col-md-6">{{ row.readName|raw }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-4 col-md-6 text-right">Категория:</div>
+    <div class="col-8 col-md-6">{{ row.Category.Name }}[{{ row.Category.ID }}]</div>
+</div>
+<div class="form-group row">
+    <div class="col-6 text-right">Мин. Количество:</div>
+    <div class="col-6">{{ row.MinQuantity }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-6 text-right">Макс. Количество:</div>
+    <div class="col-6">{{ row.MaxQuantity }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-6 text-right">Цена(за 1000шт):</div>
+    <div class="col-6">{{ row.Price }} руб.</div>
+</div>
+<div class="form-group row">
+    <div class="col-12 text-left">Описание:</div>
+    <div class="col-12">
+        {{ row.readDescription|raw }}
+    </div>
+</div>

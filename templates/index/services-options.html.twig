@@ -1,0 +1,6 @@
+{% set Discount = app.user.discount %}
+{% for row in rows %}
+    <option value="{{ row.ID }}" min-quantity="{{ row.MinQuantity }}" max-quantity="{{ row.MaxQuantity }}" price="{{ row.Price - row.Price*(Discount/100) }}">
+        {{ row.readName|raw }} - {{ row.Price - row.Price*(Discount/100) }}руб
+    </option>
+{% endfor %}

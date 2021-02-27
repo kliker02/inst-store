@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Авторизация - Inst-Store{% endblock %}
+{% block header %}
+    <!--============= Header Section Starts Here =============-->
+    <header class="header-section inner-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="{{ path('app_index_index') }}">
+                        <img src="./assets/images/logo/logo.png" alt="logo">
+                    </a>
+                </div>
+                {{ include('base/header_list_links.html.twig') }}
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--============= Header Section Ends Here =============-->
+
+    <section class="page-header bg_img oh" data-background="./assets/images/page-header.png">
+        <div class="bottom-shape d-none d-md-block">
+            <img src="./assets/css/img/page-header.png" alt="css">
+        </div>
+        <div class="container">
+            <div class="page-header-content cl-white">
+                <h2 class="title">Авторизация</h2>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ path('app_index_index') }}">Главная</a>
+                    </li>
+                    <li>
+                        Авторизация
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--============= Header Section Ends Here =============-->
+{% endblock %}
+{% block body %}
+    <!--============= ScrollToTop Section Starts Here =============-->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+    <div class="overlay"></div>
+    <!--============= ScrollToTop Section Ends Here =============-->
+   <div class="container">
+       <form method="post" class="padding-bottom">
+           {% if error %}
+               <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+           {% endif %}
+
+           {% if app.user %}
+               <div class="mb-3">
+                   Вы авторизированы как {{ app.user.username }}, <a href="{{ path('app_logout') }}">Выйти</a>
+               </div>
+           {% endif %}
+
+           <div class="form-group">
+               <label for="inputEmail">E-mail</label>
+               <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+           </div>
+           <div class="form-group">
+               <label for="inputPassword">Пароль</label>
+               <input type="password" name="password" id="inputPassword" class="form-control" required>
+           </div>
+
+           <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+           <div class="checkbox mb-3 d-flex align-items-center">
+               <input type="checkbox" name="_remember_me" id="_remember_me" style="width: 25px;">
+               <label for="_remember_me" class="m-0 ml-2">Запомнить меня</label>
+           </div>
+
+           <button class="btn btn-lg btn-primary" type="submit">
+               Авторизоваться
+           </button>
+           <div class="row justify-content-between">
+                <a style="font-size: 0.8rem" href="{{ path('app_forgot_password_request') }}">Забыли пароль?</a>
+                <a style="text-right; font-size: 0.8rem" href="{{ path('app_register') }}">Нет аккаунта? Зарегистрируйтесь</a>
+            </div>
+       </form>
+   </div>
+{% endblock %}

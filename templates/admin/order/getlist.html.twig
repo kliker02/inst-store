@@ -1,0 +1,61 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <div class="orders">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="box-title">Список Заказов</h4>
+                    </div>
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Пользователь</th>
+                                    <th>Вид накрутки</th>
+                                    <th>Количество</th>
+                                    <th>Ссылка</th>
+                                    <th>Остаток</th>
+                                    <th>Было</th>
+                                    <th>Статус</th>
+                                    <th>Цена</th>
+                                    <th>Дата создания</th>
+                                    <th>Детали</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in pagination %}
+                                    <tr>
+                                        <th scope="row">{{ loop.index }}</th>
+                                        <td>{{ row.UserName }}</td>
+                                        <td>{{ row.Service.readName }}[{{ row.Service.ID }}]</td>
+                                        <td>{{ row.Quantity }}</td>
+                                        <td>{{ row.Link }}</td>
+                                        <td>{{ row.QuantityRemains }}</td>
+                                        <td>{{ row.StartCount }}</td>
+                                        <td>{{ row.Status }}</td>
+                                        <td>{{ row.Total }}</td>
+                                        <td>{{ row.CreatedDate.format('d.m.Y H:i:s') }}</td>
+                                        <td></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div> <!-- /.table-stats -->
+                    </div>
+                </div> <!-- /.card -->
+            </div>
+        </div>
+        <div>
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+    <!-- /.orders -->
+    <div class="clearfix"></div>
+
+    </div>
+    <!-- /#right-panel -->
+
+{% endblock %}

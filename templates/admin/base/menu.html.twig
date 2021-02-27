@@ -1,0 +1,78 @@
+<!-- Left Panel -->
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{{ path('app_admin') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-circle"></i>Услуги</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_service_getlist') }}">
+                                Список услуг</a></li>
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_service_add') }}">
+                                Добавить услугу</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-circle"></i>Категории</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_category_getlist') }}">
+                                Список категорий</a></li>
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_category_add') }}">
+                                Добавить категорию</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-circle"></i>Финансы</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_payment_getlist') }}">
+                                Счета</a></li>
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_payment_add') }}">
+                                Добавить счёт</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-circle"></i>Заказы</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_order_getlist') }}">
+                                Список заказов</a></li>
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_order_add') }}">
+                                Создать заказ</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-circle"></i>Пользователи</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_user_getlist') }}">
+                                Список пользователей</a></li>
+                        <li>
+                            <i class="menu-icon fa fa-circle-thin"></i>
+                            <a href="{{ path('app_admin_user_add') }}">
+                                [НЕ РАБОТАЕТ]Добавить пользователя</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside>
+<!-- /#left-panel -->

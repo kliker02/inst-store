@@ -1,0 +1,59 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <div class="pb-4 text-right">
+
+        <a href="javascript:void(0)" onclick="if(confirm('Удалить счёт?')) location.href = '{{ path('app_admin_payment_delete', {id: row.ID}) }}'" class="btn btn-danger">Удалить</a>
+        {% if row.Status == constant('STATUS_NEW', row) %}
+            <a href="{{ path('app_admin_payment_edit', {id: row.id}) }}" class="btn btn-info">Редактировать</a>
+        {% endif %}
+        <a href="{{ path('app_admin_payment_change_status', {id: row.id}) }}" class="btn btn-info">Изменить статус</a>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <!-- Credit Card -->
+            <div id="pay-invoice">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-center">{{ row.getTypeText(row.Type) }} #{{ "%06d"|format(row.ID) }}</h3>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Тип:</div>
+                            <div class="col-sm-6">{{ row.getTypeText(row.Type) }}</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Статус:</div>
+                            <div class="col-sm-6"><b>{{ row.getStatusText(row.Status) }}</b></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Пользователь:</div>
+                            <div class="col-sm-6"><a href="{{ path('app_admin_user_get', {id: row.UserID}) }}">{{ row.UserName }}[{{ row.UserID }}]</a></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Описание:</div>
+                            <div class="col-sm-6">{{ row.Name }}</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Итого:</div>
+                            <div class="col-sm-6"><b>{{ row.Total }} руб.</b></div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Дата создания:</div>
+                            <div class="col-sm-6">{{ row.CreatedDate.format('d.m.Y H:i:s') }}</div>
+                        </div>
+                        {% if row.ChangedBy %}
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Дата изменения:</div>
+                            <div class="col-sm-6">{{ row.ChangedDate.format('d.m.Y H:i:s') }}</div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

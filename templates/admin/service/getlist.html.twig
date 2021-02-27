@@ -1,0 +1,52 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <div class="pb-4 text-right">
+        <a href="{{ path('app_admin_service_add') }}" class="btn btn-success">Создать услугу</a>
+    </div>
+    <div class="services">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="box-title">Список Услуг</h4>
+                    </div>
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Название</th>
+                                    <th>Категория</th>
+                                    <th>Статус</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in pagination %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ row.readName|raw }}</td>
+                                        <td>{{ row.Category.Name }}</td>
+                                        <td><span class="badge badge-{{ row.Status == constant('STATUS_ACTIVE', Service) ? 'complete' : 'pending' }}">{{ Service.getStatusText(row.Status) }}</span></td>
+                                        <td>[<a href="{{ path('app_admin_service_get', {id: row.ID}) }}">Детали</a>/<a href="{{ path('app_admin_service_edit', {id: row.ID}) }}">Изменить</a>]</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div> <!-- /.table-stats -->
+                    </div>
+                </div> <!-- /.card -->
+            </div>
+        </div>
+        <div>
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+    <!-- /.orders -->
+    <div class="clearfix"></div>
+
+    </div>
+    <!-- /#right-panel -->
+
+{% endblock %}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Накрутка Instagram, Продвижение Instagram, накрутка, накрутка инста, инста накрутка, накрутка лайков инст, накрутка инстаграм лайков">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Inst-Store - накрутка подписчиков в инстаграм, лайков, комментариев{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
+
+    {% block stylesheets %}{% endblock %}
+    <script src="//code-ya.jivosite.com/widget/2HEh7EeRp9" async></script> {# chat support #}
+</head>
+<body>
+{% block header %}{{ include('base/header.html.twig') }}{% endblock %}
+{% set success = app.flashes('success')%}
+{% set errors = app.flashes('error')%}
+{% if (success is not empty or errors is not empty) %}
+<div class="container mt-5" style="position: absolute; z-index: 1; top: 42px;width: 100%;">
+    {% for message in success %}
+        <p class="alert alert-success">{{ message }}</p>
+    {% endfor %}
+    {% for message in errors %}
+        <p class="alert alert-danger">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+{% block body %}{% endblock %}
+{% block footer %}{{ include('base/footer.html.twig') }}{% endblock %}
+<script src="{{ asset('/assets/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('/assets/js/modernizr-3.6.0.min.js') }}"></script>
+<script src="{{ asset('/assets/js/plugins.js') }}"></script>
+<script src="{{ asset('/assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/assets/js/magnific-popup.min.js') }}"></script>
+<script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('/assets/js/wow.min.js') }}"></script>
+<script src="{{ asset('/assets/js/waypoints.js') }}"></script>
+<script src="{{ asset('/assets/js/nice-select.js') }}"></script>
+<script src="{{ asset('/assets/js/owl.min.js') }}"></script>
+<script src="{{ asset('/assets/js/counterup.min.js') }}"></script>
+<script src="{{ asset('/assets/js/paroller.js') }}"></script>
+<script src="{{ asset('/assets/js/main.js') }}"></script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(69776866, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/69776866" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

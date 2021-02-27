@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <div class="pb-4 text-right">
+
+        {% if row.active %}
+            <a href="javascript:void(0)" onclick="if(confirm('Заблокировать пользователя?')) location.href = '{{ path('app_admin_user_ban', {id: row.ID}) }}'" class="btn btn-danger">Заблокировать</a>
+        {% else %}
+            <a href="javascript:void(0)" onclick="if(confirm('Разблокировать пользователя?')) location.href = '{{ path('app_admin_user_unban', {id: row.ID}) }}'" class="btn btn-success">Разблокировать</a>
+        {% endif %}
+        <a href="{{ path('app_admin_user_edit', {id: row.id}) }}" class="btn btn-info">Редактировать</a>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <!-- Credit Card -->
+            <div id="pay-invoice">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-center">Пользователь - {{ row.email }}[{{ row.id }}]</h3>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Статус:</div>
+                            <div class="col-sm-6">
+                                <span class="badge badge-{{ row.active ? 'complete' : 'pending' }}">{{ row.getActiveText(row.active) }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Email:</div>
+                            <div class="col-sm-6">{{ row.email }} [{{ row.isVerified ? '<b style="color:green">подтверждён</b>' : '<b style="color:red">ожидает подтверждения</b>'}}]</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Роли:</div>
+                            <div class="col-sm-6">{{ row.roles|join(',') }}</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Скидка:</div>
+                            <div class="col-sm-6">{{ row.discount }} %</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Баланс RUB:</div>
+                            <div class="col-sm-6">{{ row.balanceRUB }} руб.</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3 text-right">Дата создания:</div>
+                            <div class="col-sm-6">{{ row.createdAt.format('Y-m-d H:i:s') }}</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

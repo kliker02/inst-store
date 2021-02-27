@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+{% set Discount = app.user ? app.user.discount : 0 %}
+{% block title %}Услуга - {{ row.readName|raw }}{% endblock %}
+{% block header %}
+    <!--============= Header Section Starts Here =============-->
+    <header class="header-section inner-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="{{ path('app_index_index') }}">
+                        <img src="{{ asset('/assets/images/logo/logo.png') }}" alt="logo">
+                    </a>
+                </div>
+                {{ include('base/header_list_links.html.twig') }}
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--============= Header Section Ends Here =============-->
+
+    <section class="page-header bg_img oh" data-background="{{ asset('/assets/images/page-header.png') }}">
+        <div class="bottom-shape d-none d-md-block">
+            <img src="{{ asset('/assets/css/img/page-header.png') }}" alt="css">
+        </div>
+        <div class="container">
+            <div class="page-header-content cl-white">
+                <h2 class="title">{{ row.readName|raw }}</h2>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ path('app_index_index') }}">Главная</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_index_services') }}">Услуги</a>
+                    </li>
+                    <li>
+                        {{ row.readName|raw }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--============= Header Section Ends Here =============-->
+{% endblock %}
+{% block body %}
+<!--============= ScrollToTop Section Starts Here =============-->
+<div class="preloader">
+    <div class="preloader-inner">
+        <div class="preloader-icon">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+<div class="overlay"></div>
+<!--============= ScrollToTop Section Ends Here =============-->
+<!--============= Blog Section Starts Here =============-->
+<section class="blog-section padding-top padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right">Название:</div>
+                    <div class="col-sm-6">{{ row.readName|raw }}</div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right">Категория:</div>
+                    <div class="col-sm-6">{{ row.Category.Name }}[{{ row.Category.ID }}]</div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right">Мин. Количество:</div>
+                    <div class="col-sm-6">{{ row.MinQuantity }}</div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right">Макс. Количество:</div>
+                    <div class="col-sm-6">{{ row.MaxQuantity }}</div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right">Цена(за 1000шт):</div>
+                    <div class="col-sm-6">{{ row.Price - row.Price*(Discount/100) }} руб.</div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3 text-right">Описание:</div>
+                    <div class="col-sm-6">
+                        {{ row.readDescription|raw }}
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="{{ path('app_client_order_new') }}" class="get-button mt-2">Заказать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--============= Blog Section Ends Here =============-->
+{% endblock %}

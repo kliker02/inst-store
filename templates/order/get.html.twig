@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+{% block title %}Детали заказа - Inst-Store{% endblock %}
+{% block header %}
+    <style>
+        .get-button {
+            padding: 11px 5px;
+        }
+    </style>
+    <!--============= Header Section Starts Here =============-->
+    <header class="header-section inner-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="{{ path('app_index_index') }}">
+                        <img src="{{ asset('/assets/images/logo/logo.png') }}" alt="logo">
+                    </a>
+                </div>
+                {{ include('base/header_list_links.html.twig') }}
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--============= Header Section Ends Here =============-->
+
+    <section class="page-header bg_img oh" data-background="{{ asset('/assets/images/page-header.png') }}">
+        <div class="bottom-shape d-none d-md-block">
+            <img src="{{ asset('/assets/css/img/page-header.png') }}" alt="css">
+        </div>
+        <div class="container">
+            <div class="page-header-content cl-white">
+                <h2 class="title">Детали заказа</h2>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{{ path('app_index_index') }}">Главная</a>
+                    </li>
+                    <li>
+                        Детали заказа
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--============= Header Section Ends Here =============-->
+{% endblock %}
+{% block body %}
+<!--============= ScrollToTop Section Starts Here =============-->
+<div class="preloader">
+    <div class="preloader-inner">
+        <div class="preloader-icon">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+<div class="overlay"></div>
+<!--============= ScrollToTop Section Ends Here =============-->
+<!--============= Blog Section Starts Here =============-->
+<section class="blog-section padding-top padding-bottom">
+    <div class="container">
+        <div class="row justify-content-between">
+           <div class="col-sm-12">
+               <div class="row">
+                   <div class="col-sm-4">Статус:</div>
+                   <div class="col-sm-6">{{ row.Status }}</div>
+               </div>
+               <div class="row">
+                   <div class="col-sm-4">Вид накрутки:</div>
+                   <div class="col-sm-6">{{ row.Service.readName|raw }}</div>
+               </div>
+               <div class="row">
+                   <div class="col-sm-4">Было:</div>
+                   <div class="col-sm-6">{{ row.StartCount }}</div>
+               </div>
+               <div class="row">
+                   <div class="col-sm-4">Количество:</div>
+                   <div class="col-sm-6">{{ row.Quantity }}</div>
+               </div>
+               <div class="row">
+                   <div class="col-sm-4">Остаток:</div>
+                   <div class="col-sm-6">{{ row.QuantityRemains }}</div>
+               </div>
+               <div class="row">
+                   <div class="col-sm-4">Ссылка:</div>
+                   <div class="col-sm-6">{{ row.Link }}</div>
+               </div>
+               <div class="row">
+                   <div class="col-sm-4">Цена:</div>
+                   <div class="col-sm-6">{{ row.Total }} руб.</div>
+               </div>
+               <div class="row mt-4">
+                   <table class="table table-sm">
+                       <thead>
+                       <tr>
+                           <th colspan="3">Счета, связанные с заказом:</th>
+                       </tr>
+                       <tr>
+                           <th scope="col">Описание</th>
+                           <th scope="col">Тип</th>
+                           <th scope="col">Итого</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       {% set Totals = 0 %}
+                         {% for payment in payments %}
+                             {% set Totals = Totals + payment.Total*payment.Factor %}
+                             <tr>
+                                 <td>{{ payment.Name }}</td>
+                                 <td>{{ payment.getTypeText(payment.Type) }}</td>
+                                 <td>{{ payment.Total*payment.Factor }} руб.</td>
+                             </tr>
+                         {% endfor %}
+                       <tr>
+                           <td colspan="2" class="text-right">Итого:</td>
+                           <td>{{ Totals }} руб.</td>
+                       </tr>
+                       </tbody>
+                   </table>
+               </div>
+           </div>
+        </div>
+    </div>
+</section>
+<!--============= Blog Section Ends Here =============-->
+{% endblock %}
